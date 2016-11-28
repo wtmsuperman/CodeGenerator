@@ -11,14 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    public void Gen()
+
+    public void Generate(String ftlPath,String outputPath,Map<String,Object> root)
     {
         Configuration cfg = new Configuration();
-        Template t = null;
         try {
-            t = cfg.getTemplate("");
-            Map<String,Object> root = new HashMap<String,Object>();
-            t.process(root,new FileWriter("mycode.java"));
+            Template t = cfg.getTemplate(ftlPath);
+            t.process(root,new FileWriter(outputPath));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TemplateException e) {
@@ -28,6 +27,5 @@ public class Main {
 
     public static void main(String[] args)
     {
-
     }
 }
