@@ -17,6 +17,19 @@ public class ClassType extends Type{
         fields = new HashMap<>();
     }
 
+    public ClassType(String className)
+    {
+        fields = new HashMap<>();
+        setClassName(className);
+    }
+
+    public ClassType(String className,String baseClass)
+    {
+        fields = new HashMap<>();
+        setClassName(className);
+        setBaseClass(baseClass);
+    }
+
     public void newClass()
     {
         Type.addType(this);
@@ -40,8 +53,37 @@ public class ClassType extends Type{
         this.baseClass = baseClass;
     }
 
+    public void setBaseClass(String baseClass)
+    {
+        Type t = Type.getType(baseClass);
+        if (t != null)
+        {
+            if (t.isClass())
+            {
+                setBaseClass((ClassType)t);
+            }
+            else
+            {
+                throw new RuntimeException(baseClass + " is not a class");
+            }
+        }
+        else
+        {
+            throw new RuntimeException("no such type:"+baseClass);
+        }
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
     @Override
     public String getTypeName() {
         return className;
+    }
+
+    @Override
+    public boolean isClass() {
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package meta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,12 +34,18 @@ public class EnumType extends Type {
         }
     }
 
-    private List<EnumCase> cases;
+    private HashMap<String,EnumCase> cases;
     private String enumName;
 
     public EnumType()
     {
-        cases = new ArrayList<>();
+        cases = new HashMap<>();
+    }
+
+    public EnumType(String enumName)
+    {
+        cases = new HashMap<>();
+        setEnumName(enumName);
     }
 
     public void newEnum()
@@ -46,17 +53,41 @@ public class EnumType extends Type {
         Type.addType(this);
     }
 
+    public void setEnumName(String enumName) {
+        this.enumName = enumName;
+    }
+
     @Override
     public String getTypeName() {
         return enumName;
     }
 
+    @Override
+    public boolean isEnum() {
+        return true;
+    }
+
     public void addCase(EnumCase c)
     {
-        cases.add(c);
+        if (cases.put(c.getName(),c) != null)
+        {
+            throw new RuntimeException("duplicate enum case:" + c.getName());
+        }
+    }
+
+    public EnumCase getCase(String caseName)
+    {
+        return cases.get(caseName);
+    }
+
+    public boolean contains(String caseName)
+    {
+        return cases.containsKey(caseName);
     }
 
     public List<EnumCase> getCases() {
-        return cases;
+        List<EnumCase> all = new ArrayList<>(cases.size());
+        cases.forEach((k,v) -> all.add(v));
+        return all;
     }
 }

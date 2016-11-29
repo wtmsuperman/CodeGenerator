@@ -9,7 +9,6 @@ import java.util.HashMap;
 public abstract class Type extends Meta{
     private static HashMap<String,Type> allTyps = new HashMap<>();
 
-
     public abstract String getTypeName();
 
     public static void addType(Type type)
@@ -23,5 +22,20 @@ public abstract class Type extends Meta{
         {
             throw new RuntimeException("duplicate type: " + typeName);
         }
+    }
+
+    public static Type getType(String typeName)
+    {
+        return allTyps.get(typeName);
+    }
+
+    public boolean isClass()
+    {
+        return false;
+    }
+
+    public boolean isEnum()
+    {
+        return false;
     }
 }
