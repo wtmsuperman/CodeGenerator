@@ -1,0 +1,18 @@
+{
+  "enums ": [
+    {
+      "name" : "AttackType",
+      "items":[
+        {"name":"Normal","Value":1},
+        {"name":"Hard","Value":2}
+      ]
+    },
+    {
+      "name" : "ItemType",
+      "items" : [
+        {"name":"Money","Value":1},
+        {"name":"Task","Value":2}
+      ]
+    }
+  ]
+}
