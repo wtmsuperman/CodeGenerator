@@ -1,8 +1,5 @@
 package generator;
 
-import generator.AbsGenerator;
-import obj.EnumObj;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

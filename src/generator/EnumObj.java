@@ -1,7 +1,6 @@
-package obj;
+package generator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -14,9 +13,7 @@ public class EnumObj{
         private String name;
         private int value;
 
-        public EnumItem(String name, int value) {
-            this.name = name;
-            this.value = value;
+        public EnumItem() {
         }
 
         public String getName() {
@@ -28,7 +25,7 @@ public class EnumObj{
         }
     }
 
-    private List<EnumItem> allItmes;
+    private List<EnumItem> items;
 
     public String getName() {
         return name;
@@ -42,19 +39,19 @@ public class EnumObj{
 
     public EnumObj()
     {
-        allItmes = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
     public void addItem(EnumItem item)
     {
-        allItmes.add(item);
+        items.add(item);
     }
 
-    public List<EnumItem> getAllItmes() {
-        return allItmes;
+    public List<EnumItem> getItems() {
+        return items;
     }
 
-    public void setAllItmes(List<EnumItem> allItmes) {
-        this.allItmes = allItmes;
+    public void setItems(List<EnumItem> items) {
+        this.items = items;
     }
 }
