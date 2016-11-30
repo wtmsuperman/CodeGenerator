@@ -1,5 +1,6 @@
 package meta;
 
+import java.io.File;
 import java.util.HashMap;
 
 /**
@@ -35,14 +36,44 @@ public class ClassType extends Type{
         Type.addType(this);
     }
 
-    public void addFiled(Field field)
+    public boolean hasField(String name,boolean recursion)
     {
+        if (fields.containsKey(name))
+            return fields.containsKey(name);
+
+        if (!recursion) return false;
+
+        if (baseClass != null)
+        {
+            return baseClass.hasField(name,recursion);
+        }
+
+        return false;
+    }
+
+    public void addField(Field field)
+    {
+        if (hasField(field.getFieldName(),true))
+        {
+            throw new RuntimeException(getTypeName() + " already have this field " + field.getFieldName());
+        }
         fields.put(field.getFieldName(), field);
     }
 
-    public Field getFiled(String name)
+    public Field getFiled(String name,boolean recursion)
     {
-        return fields.get(name);
+        Field field = fields.get(name);
+        if (field != null)
+            return field;
+
+        if (!recursion) return null;
+
+        if (baseClass != null)
+        {
+            return baseClass.getFiled(name,recursion);
+        }
+
+        return null;
     }
 
     public ClassType getBaseClass() {

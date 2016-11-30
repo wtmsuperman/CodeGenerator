@@ -34,7 +34,7 @@ public class ClassParser extends XMLMetaParser {
     protected boolean handleChild(Meta parent, Meta child) {
         ClassType clazz = (ClassType) parent;
         if (child instanceof Field) {
-            clazz.addFiled((Field) child);
+            clazz.addField((Field) child);
         }
         return true;
     }

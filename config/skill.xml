@@ -1,0 +1,39 @@
+<root>
+    <enum name="MonsterUseType">
+        <case name="CREEPS" str="刷野" value="0"/>
+        <case name="GHOST" str="抓鬼" value="1"/>
+        <case name="STORY" str="剧情" value="2"/>
+        <case name="DEMON" str="封妖" value="3"/>
+    </enum>
+
+    <enum name="MonsterAttackType">
+        <case name="OUTATTACK" str="外功" value="0"/>
+        <case name="INATTACK" str="内功" value="1"/>
+        <case name="SEAL" str="封印" value="2"/>
+        <case name="AUXILIARY" str="辅助" value="3"/>
+        <case name="OUTATTACKMAINMONSTER" str="外功主怪" value="4"/>
+        <case name="INATTACKMAINMONSTER" str="内功主怪" value="5"/>
+        <case name="SEALMAINMONSTER" str="封印主怪" value="6"/>
+        <case name="AUXILIARYMAINMONSTER" str="辅助主怪" value="7"/>
+    </enum>
+
+    <class name="Item">
+        <field name="id" type="int" />
+        <field name="name" type="string" comment="名字"/>
+        <field name="cost" type="int" comment="价值"/>
+    </class>
+
+    <class name="TaskItem" base="Item">
+        <field name="taskID" type="int" />
+    </class>
+
+    <class name="cfg.Monster" file="怪物表.xls">
+        <field name="planningDes" type="string" export="none" str="策划描述"/>
+        <field name="name" type="string" str="怪物名称"/>
+        <field name="modelId" type="int" str="怪物形象id"/>
+        <field name="damage" type="float" comment="伤害值" />
+        <field name="attrs" type="list@int" comment="属性" />
+        <field name="desc" type="map@string,string" comment="描述" />
+        <field name="itemDrops" type="list@Item" comment="掉落" />
+    </class>
+</root>
