@@ -5,7 +5,7 @@ package parser;
  */
 public class JSONParser implements Parser {
     @Override
-    public void parse(String metaFile) {
-
+    public boolean parse(String metaFile) {
+        return false;
     }
 }

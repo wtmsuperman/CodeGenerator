@@ -5,5 +5,5 @@ package parser;
  */
 
 public interface Parser {
-    void parse(String metaFile);
+    boolean parse(String metaFile);
 }

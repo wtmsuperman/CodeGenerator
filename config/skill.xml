@@ -36,4 +36,6 @@
         <field name="desc" type="map@string,string" comment="描述" />
         <field name="itemDrops" type="list@Item" comment="掉落" />
     </class>
+
+    <import file="config/test.xml" />
 </root>

@@ -35,9 +35,8 @@ public abstract class Type extends Meta {
         return allTyps.get(typeName);
     }
 
-    public static Collection<Type> getAllType()
-    {
-        return  allTyps.values();
+    public static Collection<Type> getAllType() {
+        return allTyps.values();
     }
 
     public abstract String getTypeName();

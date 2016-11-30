@@ -34,24 +34,41 @@ public class XMLParser implements Parser {
     }
 
     @Override
-    public void parse(String metaFile) {
+    public boolean parse(String metaFile) {
         try {
             File file = new File(metaFile);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setIgnoringComments(true);
             Document doc = factory.newDocumentBuilder().parse(file);
             Element root = doc.getDocumentElement();
-            doParse(root, null, null);
-        } catch (ParserConfigurationException | IOException | SAXException e) {
+            return doParse(root, null, null);
+        } catch (ParserConfigurationException | IOException | SAXException | RuntimeException e) {
+            System.err.println("parse xml failed:" + metaFile);
             e.printStackTrace();
         }
+        return false;
     }
 
-    private void doParse(Element root, XMLMetaParser parent, Meta parentMeta) {
+    private boolean doParse(Element root, XMLMetaParser parent, Meta parentMeta) {
         NodeList nodeList = root.getChildNodes();
         for (int i = 0; i < nodeList.getLength(); ++i) {
             Node node = nodeList.item(i);
             if (node.getNodeType() != Node.ELEMENT_NODE) {
+                continue;
+            }
+
+            if (node.getNodeName().equalsIgnoreCase("import"))
+            {
+                Element e = (Element)node;
+                String fileName = e.getAttribute("file");
+                if (fileName == null || fileName.isEmpty())
+                {
+                    throw new RuntimeException("import error file is empty");
+                }
+                if (!parse(fileName))
+                {
+                    return false;
+                }
                 continue;
             }
 
@@ -61,9 +78,15 @@ public class XMLParser implements Parser {
             }
             Meta meta = parser.parse((Element) node, parent, parentMeta);
             if (node.hasChildNodes()) {
-                doParse((Element) node, parser, meta);
+                boolean ret = doParse((Element) node, parser, meta);
+                if (!ret)
+                {
+                    return false;
+                }
             }
             parser.parseDone(meta);
         }
+
+        return true;
     }
 }

@@ -11,7 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
         XMLParser xmlParser = new XMLParser();
-        xmlParser.parse("config/skill.xml");
+        boolean ret = xmlParser.parse("config/skill.xml");
+        if (!ret)
+        {
+            System.out.println("parse faield");
+            return;
+        }
         Collection<Type> allTypes = Type.getAllType();
         for (Type t : allTypes) {
             System.out.println(t.getTypeName());

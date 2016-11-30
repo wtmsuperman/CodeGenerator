@@ -37,7 +37,7 @@ public abstract class XMLMetaParser {
             return meta;
 
         if (!parent.handleChild(parentMeta, meta)) {
-            throw new RuntimeException(parent.nodeName + " could not parse this child node "+nodeName);
+            throw new RuntimeException(parent.nodeName + " could not parse this child node " + nodeName);
         }
 
         return meta;
