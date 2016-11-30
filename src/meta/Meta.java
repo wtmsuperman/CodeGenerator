@@ -7,15 +7,13 @@ import java.util.HashMap;
  */
 public class Meta {
 
-    private HashMap<String,Object> metaDatas = new HashMap<>();
+    private HashMap<String, Object> metaDatas = new HashMap<>();
 
-    public void addMetaData(String key,Object val)
-    {
-        metaDatas.put(key,val);
+    public void addMetaData(String key, Object val) {
+        metaDatas.put(key, val);
     }
 
-    public Object getMetaData(String key)
-    {
+    public Object getMetaData(String key) {
         return metaDatas.get(key);
     }
 }

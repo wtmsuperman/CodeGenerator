@@ -7,8 +7,7 @@ import meta.Meta;
 /**
  * Created by Administrator on 2016/11/30.
  */
-public class EnumParser extends XMLMetaParser
-{
+public class EnumParser extends XMLMetaParser {
     public EnumParser(String nodeName) {
         super(nodeName);
     }
@@ -20,9 +19,8 @@ public class EnumParser extends XMLMetaParser
 
     @Override
     protected boolean parseAttr(Meta meta, String name, String value) {
-        EnumType enumType = (EnumType)meta;
-        if (name == "name")
-        {
+        EnumType enumType = (EnumType) meta;
+        if (name == "name") {
             enumType.setEnumName(value);
             return true;
         }
@@ -31,16 +29,15 @@ public class EnumParser extends XMLMetaParser
 
     @Override
     public void parseDone(Meta meta) {
-        EnumType enumType = (EnumType)meta;
+        EnumType enumType = (EnumType) meta;
         enumType.newEnum();
     }
 
     @Override
     protected boolean handleChild(Meta parent, Meta child) {
-        EnumType enumType = (EnumType)parent;
-        if (child instanceof EnumCase)
-        {
-            enumType.addCase((EnumCase)child);
+        EnumType enumType = (EnumType) parent;
+        if (child instanceof EnumCase) {
+            enumType.addCase((EnumCase) child);
         }
         return super.handleChild(parent, child);
     }

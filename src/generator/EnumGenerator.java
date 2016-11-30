@@ -11,18 +11,16 @@ public class EnumGenerator extends AbsGenerator {
 
     private List<EnumObj> objs;
 
-    public EnumGenerator()
-    {
+    public EnumGenerator() {
         objs = new ArrayList<>();
     }
 
-    public void addEnum(EnumObj obj)
-    {
+    public void addEnum(EnumObj obj) {
         objs.add(obj);
     }
 
     @Override
     protected void makeRoot(HashMap<String, Object> toFill) {
-        toFill.put("enums",this);
+        toFill.put("enums", this);
     }
 }

@@ -24,12 +24,12 @@
       <file leaf-file-name="XMLParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/parser/xml/XMLParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
+            <state relative-caret-position="666">
+              <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#906#907#0" expanded="true" />
-                <element signature="e#965#966#0" expanded="true" />
+                <element signature="e#855#856#0" expanded="true" />
+                <element signature="e#915#916#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,12 +134,12 @@
         <option value="$PROJECT_DIR$/src/meta/EnumCase.java" />
         <option value="$PROJECT_DIR$/src/meta/EnumType.java" />
         <option value="$PROJECT_DIR$/src/parser/XMLParser.java" />
-        <option value="$PROJECT_DIR$/src/parser/xml/XMLParser.java" />
         <option value="$PROJECT_DIR$/src/parser/xml/ClassParser.java" />
         <option value="$PROJECT_DIR$/src/parser/xml/XMLMetaParser.java" />
         <option value="$PROJECT_DIR$/src/parser/xml/FieldParser.java" />
         <option value="$PROJECT_DIR$/src/parser/xml/EnumCaseParser.java" />
         <option value="$PROJECT_DIR$/src/parser/xml/EnumParser.java" />
+        <option value="$PROJECT_DIR$/src/parser/xml/XMLParser.java" />
       </list>
     </option>
   </component>
@@ -856,8 +856,8 @@
         <state relative-caret-position="220">
           <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
-            <element signature="e#175#176#0" expanded="false" />
-            <element signature="e#206#207#0" expanded="false" />
+            <element signature="e#176#177#0" expanded="false" />
+            <element signature="e#207#208#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -898,12 +898,12 @@
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
-            <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="false" />
+            <element signature="e#874#875#0" expanded="false" />
+            <element signature="e#949#950#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1076,7 +1076,7 @@
         <state relative-caret-position="286">
           <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1104,10 +1104,10 @@
         <state relative-caret-position="198">
           <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
           <folding>
-            <element signature="e#272#273#0" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#368#369#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1188,12 +1188,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/xml/XMLParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
+        <state relative-caret-position="666">
+          <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -8,13 +8,12 @@ import generator.EnumGenerator;
  */
 public class EnumXmlParser extends AbstractXmlParser {
 
-    public EnumXmlParser(String xmlPath)
-    {
+    public EnumXmlParser(String xmlPath) {
         super(xmlPath);
     }
 
     @Override
     public void parse(AbsGenerator gen) {
-        EnumGenerator enumGen = (EnumGenerator)gen;
+        EnumGenerator enumGen = (EnumGenerator) gen;
     }
 }

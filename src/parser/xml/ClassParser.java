@@ -7,8 +7,7 @@ import meta.Meta;
 /**
  * Created by Administrator on 2016/11/30.
  */
-public class ClassParser extends XMLMetaParser
-{
+public class ClassParser extends XMLMetaParser {
     public ClassParser(String nodeName) {
         super(nodeName);
     }
@@ -20,33 +19,29 @@ public class ClassParser extends XMLMetaParser
 
     @Override
     protected boolean parseAttr(Meta meta, String name, String value) {
-        ClassType clazz = (ClassType)meta;
-        if (name == "name")
-        {
+        ClassType clazz = (ClassType) meta;
+        if (name == "name") {
             clazz.setClassName(value);
             return true;
-        }
-        else if(name == "base")
-        {
+        } else if (name == "base") {
             clazz.setBaseClass(value);
             return true;
         }
-        return super.parseAttr(meta,name,value);
+        return super.parseAttr(meta, name, value);
     }
 
     @Override
-    protected boolean handleChild(Meta parent,Meta child) {
-        ClassType clazz =(ClassType)parent;
-        if (child instanceof Field)
-        {
-            clazz.addFiled((Field)child);
+    protected boolean handleChild(Meta parent, Meta child) {
+        ClassType clazz = (ClassType) parent;
+        if (child instanceof Field) {
+            clazz.addFiled((Field) child);
         }
         return true;
     }
 
     @Override
     public void parseDone(Meta meta) {
-        ClassType clazz = (ClassType)meta;
+        ClassType clazz = (ClassType) meta;
         clazz.newClass();
     }
 }

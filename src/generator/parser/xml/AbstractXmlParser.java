@@ -7,8 +7,7 @@ import generator.Parser;
  */
 public abstract class AbstractXmlParser implements Parser {
 
-    public AbstractXmlParser(String xmlPath)
-    {
+    public AbstractXmlParser(String xmlPath) {
 
     }
 }

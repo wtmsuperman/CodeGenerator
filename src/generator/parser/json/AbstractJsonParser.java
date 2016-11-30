@@ -31,8 +31,7 @@ public abstract class AbstractJsonParser implements Parser {
         return JSON.parseObject(bytes, clazz);
     }
 
-    public <T> List<T> parseArray(Class<T> clazz)
-    {
-        return JSON.parseArray(new String(bytes),clazz);
+    public <T> List<T> parseArray(Class<T> clazz) {
+        return JSON.parseArray(new String(bytes), clazz);
     }
 }
