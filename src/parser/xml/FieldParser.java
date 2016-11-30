@@ -35,7 +35,7 @@ public class FieldParser extends XMLMetaParser {
             }
 
             String pre = sub[0];
-            if (pre.equalsIgnoreCase("repeated")) {
+            if (pre.equalsIgnoreCase("list")) {
                 ListType type = new ListType();
                 String valueType = sub[1];
                 type.setValueType(Type.getType(valueType));
@@ -51,6 +51,8 @@ public class FieldParser extends XMLMetaParser {
                 MapType map = new MapType();
                 map.setKeyType(keyType);
                 map.setValueType(valueType);
+                field.setFieldType(map);
+                return true;
             }
 
             throw new RuntimeException("unknown type :" + value);

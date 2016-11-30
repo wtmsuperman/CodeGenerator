@@ -2,6 +2,7 @@ package meta;
 
 import meta.basic.*;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -32,6 +33,11 @@ public abstract class Type extends Meta {
 
     public static Type getType(String typeName) {
         return allTyps.get(typeName);
+    }
+
+    public static Collection<Type> getAllType()
+    {
+        return  allTyps.values();
     }
 
     public abstract String getTypeName();

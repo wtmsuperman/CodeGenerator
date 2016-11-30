@@ -2,13 +2,19 @@
  * Created by Administrator on 2016/11/28.
  */
 
-import generator.EnumGenerator;
-import generator.parser.json.EnumJsonParser;
+import meta.Type;
+import parser.xml.XMLParser;
+
+import java.util.Collection;
 
 public class Main {
 
     public static void main(String[] args) {
-        EnumGenerator e = new EnumGenerator();
-        e.parse(new EnumJsonParser("config/enum.json"));
+        XMLParser xmlParser = new XMLParser();
+        xmlParser.parse("config/skill.xml");
+        Collection<Type> allTypes = Type.getAllType();
+        for (Type t : allTypes) {
+            System.out.println(t.getTypeName());
+        }
     }
 }

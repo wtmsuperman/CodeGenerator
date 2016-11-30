@@ -38,6 +38,7 @@ public class EnumParser extends XMLMetaParser {
         EnumType enumType = (EnumType) parent;
         if (child instanceof EnumCase) {
             enumType.addCase((EnumCase) child);
+            return true;
         }
         return super.handleChild(parent, child);
     }

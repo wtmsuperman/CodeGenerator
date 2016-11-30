@@ -6,36 +6,42 @@ import java.util.HashMap;
  * Created by Administrator on 2016/11/29.
  */
 
-public class ClassType extends Type {
+public class ClassType extends Type{
 
     private HashMap<String, Field> fields;
     private String className;
     private ClassType baseClass;
 
-    public ClassType() {
+    public ClassType()
+    {
         fields = new HashMap<>();
     }
 
-    public ClassType(String className) {
+    public ClassType(String className)
+    {
         fields = new HashMap<>();
         setClassName(className);
     }
 
-    public ClassType(String className, String baseClass) {
+    public ClassType(String className,String baseClass)
+    {
         fields = new HashMap<>();
         setClassName(className);
         setBaseClass(baseClass);
     }
 
-    public void newClass() {
+    public void newClass()
+    {
         Type.addType(this);
     }
 
-    public void addFiled(Field field) {
+    public void addFiled(Field field)
+    {
         fields.put(field.getFieldName(), field);
     }
 
-    public Field getFiled(String name) {
+    public Field getFiled(String name)
+    {
         return fields.get(name);
     }
 
@@ -47,16 +53,23 @@ public class ClassType extends Type {
         this.baseClass = baseClass;
     }
 
-    public void setBaseClass(String baseClass) {
+    public void setBaseClass(String baseClass)
+    {
         Type t = Type.getType(baseClass);
-        if (t != null) {
-            if (t.isClass()) {
-                setBaseClass((ClassType) t);
-            } else {
+        if (t != null)
+        {
+            if (t.isClass())
+            {
+                setBaseClass((ClassType)t);
+            }
+            else
+            {
                 throw new RuntimeException(baseClass + " is not a class");
             }
-        } else {
-            throw new RuntimeException("no such type:" + baseClass);
+        }
+        else
+        {
+            throw new RuntimeException("no such type:"+baseClass);
         }
     }
 
