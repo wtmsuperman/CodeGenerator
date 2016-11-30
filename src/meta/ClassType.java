@@ -37,7 +37,7 @@ public class ClassType extends Type{
 
     public void addFiled(Field field)
     {
-        fields.put(field.getFiledName(), field);
+        fields.put(field.getFieldName(), field);
     }
 
     public Field getFiled(String name)

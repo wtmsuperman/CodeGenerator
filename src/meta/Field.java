@@ -6,23 +6,28 @@ package meta;
 
 public class Field extends Meta {
 
-    private Type filedType;
-    private String filedName;
+    private Type fieldType;
+    private String fieldName;
 
-    public Type getFiledType() {
-        return filedType;
+    public Type getFieldType() {
+        return fieldType;
     }
 
-    public void setFiledType(Type filedType) {
-        this.filedType = filedType;
+    public void setFieldType(Type fieldType) {
+        this.fieldType = fieldType;
     }
 
-    public String getFiledName() {
-        return filedName;
+    public void setFieldType(String fieldType)
+    {
+        setFieldType(Type.getType(fieldType));
     }
 
-    public void setFiledName(String filedName) {
-        this.filedName = filedName;
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
     }
 
 }

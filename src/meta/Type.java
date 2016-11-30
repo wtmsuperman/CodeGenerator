@@ -1,5 +1,7 @@
 package meta;
 
+import meta.basic.*;
+
 import java.util.HashMap;
 
 /**
@@ -37,5 +39,14 @@ public abstract class Type extends Meta{
     public boolean isEnum()
     {
         return false;
+    }
+
+    //增加基础类型
+    static {
+        addType(new FloatType());
+        addType(new BoolType());
+        addType(new IntType());
+        addType(new ListType());
+        addType(new StringType());
     }
 }

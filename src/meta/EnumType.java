@@ -1,45 +1,19 @@
 package meta;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/11/29.
  */
 public class EnumType extends Type {
-
-    public class EnumCase
-    {
-        private String name;
-        private int value;
-
-        public EnumCase() {
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public void setValue(int value) {
-            this.value = value;
-        }
-    }
-
     private HashMap<String,EnumCase> cases;
+    private Set<Integer> valueSet;
     private String enumName;
 
     public EnumType()
     {
         cases = new HashMap<>();
+        valueSet = new HashSet<>();
     }
 
     public EnumType(String enumName)
@@ -69,10 +43,23 @@ public class EnumType extends Type {
 
     public void addCase(EnumCase c)
     {
-        if (cases.put(c.getName(),c) != null)
+        if (cases.containsKey(c.getName()))
         {
             throw new RuntimeException("duplicate enum case:" + c.getName());
         }
+
+        if (valueSet.contains(c.getValue()))
+        {
+            throw new RuntimeException("duplicate enum case value:" + c.getName());
+        }
+
+        cases.put(c.getName(),c);
+        valueSet.add(c.getValue());
+    }
+
+    public void addCase(String name,int value)
+    {
+        addCase(new EnumCase(name,value));
     }
 
     public EnumCase getCase(String caseName)
