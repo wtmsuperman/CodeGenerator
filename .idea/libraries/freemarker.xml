@@ -2,7 +2,6 @@
   <library name="freemarker">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/freemarker.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/fastjson-1.2.21.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/cfggen.jar!/" />
     </CLASSES>
     <JAVADOC />

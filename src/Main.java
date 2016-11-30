@@ -2,8 +2,8 @@
  * Created by Administrator on 2016/11/28.
  */
 
-import meta.Type;
-import parser.xml.XMLParser;
+import metaparser.parser.xml.XMLParser;
+import metaparser.meta.Type;
 
 import java.util.Collection;
 

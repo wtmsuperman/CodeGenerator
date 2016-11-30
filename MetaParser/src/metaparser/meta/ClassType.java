@@ -1,4 +1,4 @@
-package meta;
+package metaparser.meta;
 
 import java.util.HashMap;
 
@@ -28,7 +28,7 @@ public class ClassType extends Type {
     }
 
     public void newClass() {
-        Type.addType(this);
+        addType(this);
     }
 
     public boolean hasField(String name, boolean recursion) {
@@ -70,7 +70,7 @@ public class ClassType extends Type {
     }
 
     public void setBaseClass(String baseClass) {
-        Type t = Type.getType(baseClass);
+        Type t = getType(baseClass);
         if (t != null) {
             if (t.isClass()) {
                 setBaseClass((ClassType) t);

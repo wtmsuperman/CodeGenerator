@@ -1,8 +1,8 @@
-package parser.xml;
+package metaparser.parser.xml;
 
-import meta.EnumCase;
-import meta.EnumType;
-import meta.Meta;
+import metaparser.meta.EnumCase;
+import metaparser.meta.EnumType;
+import metaparser.meta.Meta;
 
 /**
  * Created by Administrator on 2016/11/30.

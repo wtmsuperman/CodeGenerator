@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CodeGenerator.iml" filepath="$PROJECT_DIR$/CodeGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MetaParser/MetaParser.iml" filepath="$PROJECT_DIR$/MetaParser/MetaParser.iml" />
     </modules>
   </component>
 </project>

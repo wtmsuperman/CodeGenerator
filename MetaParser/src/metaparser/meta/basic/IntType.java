@@ -1,6 +1,6 @@
-package meta.basic;
+package metaparser.meta.basic;
 
-import meta.Type;
+import metaparser.meta.Type;
 
 /**
  * Created by Administrator on 2016/11/29.

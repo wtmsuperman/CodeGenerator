@@ -1,10 +1,10 @@
-package parser.xml;
+package metaparser.parser.xml;
 
-import meta.Field;
-import meta.Meta;
-import meta.Type;
-import meta.basic.ListType;
-import meta.basic.MapType;
+import metaparser.meta.Field;
+import metaparser.meta.Meta;
+import metaparser.meta.Type;
+import metaparser.meta.basic.ListType;
+import metaparser.meta.basic.MapType;
 
 /**
  * Created by Administrator on 2016/11/30.

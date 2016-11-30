@@ -1,8 +1,8 @@
-package parser.xml;
+package metaparser.parser.xml;
 
-import meta.ClassType;
-import meta.Field;
-import meta.Meta;
+import metaparser.meta.ClassType;
+import metaparser.meta.Field;
+import metaparser.meta.Meta;
 
 /**
  * Created by Administrator on 2016/11/30.

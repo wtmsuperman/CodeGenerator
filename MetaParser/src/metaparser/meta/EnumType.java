@@ -1,4 +1,4 @@
-package meta;
+package metaparser.meta;
 
 import java.util.*;
 
@@ -21,7 +21,7 @@ public class EnumType extends Type {
     }
 
     public void newEnum() {
-        Type.addType(this);
+        addType(this);
     }
 
     public void setEnumName(String enumName) {

@@ -1,6 +1,6 @@
-package meta;
+package metaparser.meta;
 
-import meta.basic.*;
+import metaparser.meta.basic.*;
 
 import java.util.Collection;
 import java.util.HashMap;

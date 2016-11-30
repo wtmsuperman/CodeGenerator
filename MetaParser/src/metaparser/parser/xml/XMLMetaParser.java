@@ -1,6 +1,6 @@
-package parser.xml;
+package metaparser.parser.xml;
 
-import meta.Meta;
+import metaparser.meta.Meta;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -28,7 +28,7 @@ public abstract class XMLMetaParser {
             String name = node.getNodeName().trim();
             String value = node.getNodeValue().trim();
             if (!parseAttr(meta, name, value)) {
-                //unkonw meta data
+                //unkonw metaparser.meta data
                 meta.addMetaData(name, value);
             }
         }

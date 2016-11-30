@@ -1,4 +1,4 @@
-package meta;
+package metaparser.meta;
 
 import java.util.HashMap;
 

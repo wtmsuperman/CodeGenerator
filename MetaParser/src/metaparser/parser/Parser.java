@@ -1,4 +1,4 @@
-package parser;
+package metaparser.parser;
 
 /**
  * Created by Administrator on 2016/11/30.

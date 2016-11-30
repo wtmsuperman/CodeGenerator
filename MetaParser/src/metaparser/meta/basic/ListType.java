@@ -1,14 +1,12 @@
-package meta.basic;
-
-import meta.Type;
+package metaparser.meta.basic;
 
 /**
  * Created by Administrator on 2016/11/29.
  */
-public class FloatType extends Type {
+public class ListType extends CollectionType {
 
     @Override
     public String getTypeName() {
-        return "float";
+        return "list";
     }
 }
