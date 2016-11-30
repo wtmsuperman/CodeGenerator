@@ -6,7 +6,7 @@ import meta.Type;
  * Created by Administrator on 2016/11/29.
  */
 public abstract class CollectionType extends Type {
-    private Type valueType;
+    protected Type valueType;
 
     public Type getValueType() {
         return valueType;

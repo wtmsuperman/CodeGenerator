@@ -20,10 +20,10 @@ public class ClassParser extends XMLMetaParser {
     @Override
     protected boolean parseAttr(Meta meta, String name, String value) {
         ClassType clazz = (ClassType) meta;
-        if (name == "name") {
+        if (name.equalsIgnoreCase("name")) {
             clazz.setClassName(value);
             return true;
-        } else if (name == "base") {
+        } else if (name.equalsIgnoreCase("base")) {
             clazz.setBaseClass(value);
             return true;
         }

@@ -20,7 +20,7 @@ public class EnumParser extends XMLMetaParser {
     @Override
     protected boolean parseAttr(Meta meta, String name, String value) {
         EnumType enumType = (EnumType) meta;
-        if (name == "name") {
+        if (name.equalsIgnoreCase("name")) {
             enumType.setEnumName(value);
             return true;
         }
