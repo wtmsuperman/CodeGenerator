@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CodeGen/CodeGen.iml" filepath="$PROJECT_DIR$/CodeGen/CodeGen.iml" />
       <module fileurl="file://$PROJECT_DIR$/CodeGenerator.iml" filepath="$PROJECT_DIR$/CodeGenerator.iml" />
       <module fileurl="file://$PROJECT_DIR$/MetaParser/MetaParser.iml" filepath="$PROJECT_DIR$/MetaParser/MetaParser.iml" />
     </modules>
