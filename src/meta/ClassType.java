@@ -43,6 +43,10 @@ public class ClassType extends Type {
         return baseClass;
     }
 
+    public void setBaseClass(ClassType baseClass) {
+        this.baseClass = baseClass;
+    }
+
     public void setBaseClass(String baseClass) {
         Type t = Type.getType(baseClass);
         if (t != null) {
@@ -54,10 +58,6 @@ public class ClassType extends Type {
         } else {
             throw new RuntimeException("no such type:" + baseClass);
         }
-    }
-
-    public void setBaseClass(ClassType baseClass) {
-        this.baseClass = baseClass;
     }
 
     public void setClassName(String className) {
