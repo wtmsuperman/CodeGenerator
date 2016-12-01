@@ -27,13 +27,12 @@
         <field name="taskID" type="int"/>
     </class>
 
-    <class name="cfg.Monster" file="怪物表.xls">
+    <class name="Monster" file="怪物表.xls">
         <field name="planningDes" type="string" export="none" str="策划描述"/>
         <field name="name" type="string" comment="怪物名称"/>
         <field name="modelId" type="int" comment="怪物形象id"/>
         <field name="damage" type="float" comment="伤害值"/>
         <field name="attrs" type="list@int" comment="属性"/>
-        <field name="desc" type="map@string,string" comment="描述"/>
         <field name="itemDrops" type="list@Item" comment="掉落"/>
     </class>
 

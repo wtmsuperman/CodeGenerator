@@ -11,16 +11,7 @@ import java.util.HashMap;
 
 public abstract class Type extends Meta {
     private static HashMap<String, Type> allTyps = new HashMap<>();
-    private static HashMap<Type, TypeStrFmt> fmtors = new HashMap<>();
-
-    //增加基础类型
-    static {
-        addType(new FloatType());
-        addType(new BoolType());
-        addType(new IntType());
-        addType(new ListType());
-        addType(new StringType());
-    }
+    private static HashMap<String, TypeStrFmt> fmtors = new HashMap<>();
 
     public static void addType(Type type) {
         String typeName = type.getTypeName();
@@ -40,8 +31,8 @@ public abstract class Type extends Meta {
         return allTyps.values();
     }
 
-    public static void addTypeStrFormator(Type t, TypeStrFmt fmt) {
-        fmtors.put(t, fmt);
+    public static void addTypeStrFormator(String typeName, TypeStrFmt fmt) {
+        fmtors.put(typeName, fmt);
     }
 
     public abstract String getTypeName();
@@ -55,10 +46,29 @@ public abstract class Type extends Meta {
     }
 
     public String getTypeStr() {
-        if (!fmtors.containsKey(this)) {
+        java.lang.String typeName = this.getTypeName();
+        if (!fmtors.containsKey(typeName)) {
             return getTypeName();
         }
 
-        return fmtors.get(this).fmt(this);
+        return fmtors.get(typeName).fmt(this);
+    }
+
+
+
+
+    public static FloatType Float = new FloatType();
+    public static BoolType  Bool = new BoolType();
+    public static IntType Int = new IntType();
+    public static ListType List = new ListType();
+    public static StringType String = new StringType();
+
+    //增加基础类型
+    static {
+        addType(Float);
+        addType(Bool);
+        addType(Int);
+        addType(List);
+        addType(String);
     }
 }
