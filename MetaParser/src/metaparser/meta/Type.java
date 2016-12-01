@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 
 public abstract class Type extends Meta {
-    private static HashMap<String, Type> allTyps = new HashMap<>();
+    private static HashMap<String, Type> allTypes = new HashMap<>();
     private static HashMap<String, TypeStrFmt> fmtors = new HashMap<>();
 
     public static void addType(Type type) {
@@ -18,17 +18,17 @@ public abstract class Type extends Meta {
         if (typeName == null || typeName.isEmpty()) {
             throw new RuntimeException("typeName is empty!");
         }
-        if (allTyps.put(typeName, type) != null) {
+        if (allTypes.put(typeName, type) != null) {
             throw new RuntimeException("duplicate type: " + typeName);
         }
     }
 
     public static Type getType(String typeName) {
-        return allTyps.get(typeName);
+        return allTypes.get(typeName);
     }
 
     public static Collection<Type> getAllType() {
-        return allTyps.values();
+        return allTypes.values();
     }
 
     public static void addTypeStrFormator(Type t, TypeStrFmt fmt) {

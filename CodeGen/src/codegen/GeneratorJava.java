@@ -1,4 +1,4 @@
-package codegen.java;
+package codegen;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -17,8 +17,9 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/12/1.
  */
-public class Generator {
+public class GeneratorJava  extends  AbstractGenerator{
 
+    @Override
     public void init()
     {
         Type.addTypeStrFormator(Type.String, new TypeStrFmt() {
@@ -64,6 +65,7 @@ public class Generator {
         return boxName;
     }
 
+    @Override
     public void genClass(ClassType classType, String templatePath, String outputPath, String typeName) {
         HashMap<String, Object> root = new HashMap<>();
 
@@ -97,6 +99,7 @@ public class Generator {
         }
     }
 
+    @Override
     public void genEnum(EnumType enumType, String templatePath, String outputPath, String typeName) {
         HashMap<String, Object> root = new HashMap<>();
 

@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/11/28.
  */
 
-import codegen.java.Generator;
+import codegen.GeneratorJava;
 import metaparser.meta.ClassType;
 import metaparser.meta.EnumType;
 import metaparser.meta.Type;
@@ -18,8 +18,7 @@ public class Main {
             return;
         }
 
-        Generator gen = new Generator();
-        gen.init();
+        GeneratorJava gen = new GeneratorJava();
         gen.genEnum((EnumType)Type.getType("MonsterUseType"), "config/enum_java.ftl", "gencode/", "java");
         gen.genClass((ClassType) Type.getType("Item"), "config/class_java.ftl", "gencode/", "java");
         gen.genClass((ClassType) Type.getType("TaskItem"), "config/class_java.ftl", "gencode/", "java");
