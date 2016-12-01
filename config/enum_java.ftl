@@ -1,5 +1,5 @@
 
-public enum ${enum.typeName}{
+public enum ${enum.typeStr}{
 
 <#list enum.cases as case>
     ${case.name}(${case.value},"${case.name}") <#if case.comment??> /*${case.comment}*/ </#if>,
@@ -9,12 +9,12 @@ public enum ${enum.typeName}{
     private int value;
     private String desc;
 
-    ${enum.typeName}(int value)
+    ${enum.typeStr}(int value)
     {
         this.value = value;
     }
 
-    ${enum.typeName}(int value,String desc) {
+    ${enum.typeStr}(int value,String desc) {
         this.value = value;
         this.desc = desc;
     }

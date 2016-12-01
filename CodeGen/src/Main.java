@@ -6,6 +6,7 @@ import codegen.java.ClassGenerator;
 import codegen.java.EnumGenerator;
 import metaparser.meta.ClassType;
 import metaparser.meta.EnumType;
+import metaparser.meta.TypeStrFmt;
 import metaparser.parser.xml.XMLParser;
 import metaparser.meta.Type;
 
@@ -25,7 +26,13 @@ public class Main {
         EnumGenerator gen = new EnumGenerator();
         gen.gen(Type.getType("MonsterUseType"),"config/enum_java.ftl","","java");
 
+        Type.addTypeStrFormator(Type.getType("string"), new TypeStrFmt() {
+            @Override
+            public String fmt(Type t) {
+                return "String";
+            }
+        });
         ClassGenerator gen2 = new ClassGenerator();
-        gen2.gen((ClassType) Type.getType("TaskItem"),"config/class_java.ftl","","java");
+        gen2.gen((ClassType) Type.getType("Item"),"config/class_java.ftl","","java");
     }
 }

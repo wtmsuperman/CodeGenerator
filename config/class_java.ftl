@@ -1,19 +1,19 @@
 
 
 
-public class ${class.typeName} <#if class.baseClass??>extends ${class.baseClass.typeName}</#if> {
+public class ${class.typeStr} <#if class.baseClass??>extends ${class.baseClass.typeStr}</#if> {
 
 <#list class.fields as field>
-    private ${field.fieldType.typeName} ${field.fieldName};
+    private ${field.fieldType.typeStr} ${field.fieldName};
 </#list>
 
 <#list class.fields as field>
-    public ${field.fieldType.typeName} get${field.fieldName?cap_first}()
+    public ${field.fieldType.typeStr} get${field.fieldName?cap_first}()
     {
         return ${field.fieldName};
     }
 
-    public void set${field.fieldName?cap_first}(${field.fieldType.typeName} ${field.fieldName})
+    public void set${field.fieldName?cap_first}(${field.fieldType.typeStr} ${field.fieldName})
     {
         this.${field.fieldName} = ${field.fieldName};
     }

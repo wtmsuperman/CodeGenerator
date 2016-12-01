@@ -48,4 +48,21 @@ public abstract class Type extends Meta {
     public boolean isEnum() {
         return false;
     }
+
+    private static HashMap<Type,TypeStrFmt> fmtors = new HashMap<>();
+
+    public static void addTypeStrFormator(Type t,TypeStrFmt fmt)
+    {
+        fmtors.put(t,fmt);
+    }
+
+    public String getTypeStr()
+    {
+        if (!fmtors.containsKey(this))
+        {
+            return getTypeName();
+        }
+
+        return fmtors.get(this).fmt(this);
+    }
 }
