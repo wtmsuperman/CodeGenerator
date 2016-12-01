@@ -1,7 +1,7 @@
 
 
 
-public class TaskItem  {
+public class TaskItem extends Item {
 
     private int taskID;
 

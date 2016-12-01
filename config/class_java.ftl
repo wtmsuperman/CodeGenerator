@@ -1,7 +1,7 @@
 
 
 
-public class ${class.typeName} <#if class.baseType??>extends ${class.baseType}</#if> {
+public class ${class.typeName} <#if class.baseClass??>extends ${class.baseClass.typeName}</#if> {
 
 <#list class.fields as field>
     private ${field.fieldType.typeName} ${field.fieldName};
