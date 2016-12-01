@@ -14,6 +14,44 @@ public class FieldParser extends XMLMetaParser {
         super(nodeName);
     }
 
+    public static Type parseType(String str)
+    {
+        //eg:
+        //int
+        //string
+        //list@int
+        //map@int,bean
+        //list@list@int
+
+        Type tryGet = Type.getType(str);
+        if (tryGet != null)
+        {
+            return tryGet;
+        }
+
+        String[] sub = split(str, "@");
+
+        String pre = sub[0];
+        if (pre.equalsIgnoreCase("list")) {
+            ListType type = new ListType();
+            Type valueType = parseType(sub[1]);
+            type.setValueType(valueType);
+            return type;
+        } else if (pre.equalsIgnoreCase("map")) {
+            String[] kv = split(sub[1], ",");
+            if (kv.length < 2) {
+                throw new RuntimeException("map need key and value " + str);
+            }
+            Type keyType = parseType(kv[0]);
+            Type valueType = parseType(kv[1]);
+            MapType map = new MapType();
+            map.setKeyType(keyType);
+            map.setValueType(valueType);
+            return map;
+        }
+        throw new RuntimeException("parse type failed " + str);
+    }
+
     @Override
     protected boolean parseAttr(Meta meta, String name, String value) {
         Field field = (Field) meta;
@@ -21,50 +59,17 @@ public class FieldParser extends XMLMetaParser {
             field.setFieldName(value);
             return true;
         } else if (name.equalsIgnoreCase("type")) {
-            //eg:
-            //int
-            //string
-            //repeated@int
-            //map@int,bean
-
-            String[] sub = split(value, "@");
-
-            if (sub.length <= 1) {
-                field.setFieldType(value);
-                return true;
-            }
-
-            String pre = sub[0];
-            if (pre.equalsIgnoreCase("list")) {
-                ListType type = new ListType();
-                String valueType = sub[1];
-                type.setValueType(Type.getType(valueType));
-                field.setFieldType(type);
-                return true;
-            } else if (pre.equalsIgnoreCase("map")) {
-                String[] kv = split(sub[1], ",");
-                if (kv.length < 2) {
-                    throw new RuntimeException("map need key and value " + value);
-                }
-                Type keyType = Type.getType(kv[0]);
-                Type valueType = Type.getType(kv[1]);
-                MapType map = new MapType();
-                map.setKeyType(keyType);
-                map.setValueType(valueType);
-                field.setFieldType(map);
-                return true;
-            }
-
-            throw new RuntimeException("unknown type :" + value);
+            field.setFieldType(parseType(value));
+            return true;
         }
         return super.parseAttr(meta, name, value);
     }
 
-    protected String[] split(String str, String p) {
-        String[] sub = str.split(p);
-        for (int i = 0; i < sub.length; i++) {
-            sub[i] = sub[i].trim();
-        }
+    protected static String[] split(String str, String p) {
+        String[] sub = new String[2];
+        int index = str.indexOf(p);
+        sub[0] = str.substring(0,index);
+        sub[1] = str.substring(index+1,str.length());
         return sub;
     }
 

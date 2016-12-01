@@ -8,7 +8,7 @@ public class Monster  {
     private String planningDes;
     private int modelId;
     private String name;
-    private List<Integer> attrs;
+    private List<List<Integer>> attrs;
 
     public float getDamage()
     {
@@ -55,12 +55,12 @@ public class Monster  {
     {
         this.name = name;
     }
-    public List<Integer> getAttrs()
+    public List<List<Integer>> getAttrs()
     {
         return attrs;
     }
 
-    public void setAttrs(List<Integer> attrs)
+    public void setAttrs(List<List<Integer>> attrs)
     {
         this.attrs = attrs;
     }
