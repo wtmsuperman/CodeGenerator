@@ -39,9 +39,6 @@ public class FieldParser extends XMLMetaParser {
             return type;
         } else if (pre.equalsIgnoreCase("map")) {
             String[] kv = split(sub[1], ",");
-            if (kv.length < 2) {
-                throw new RuntimeException("map need key and value " + str);
-            }
             Type keyType = parseType(kv[0]);
             Type valueType = parseType(kv[1]);
             MapType map = new MapType();
@@ -68,6 +65,10 @@ public class FieldParser extends XMLMetaParser {
     protected static String[] split(String str, String p) {
         String[] sub = new String[2];
         int index = str.indexOf(p);
+        if (index <= 0)
+        {
+            throw new RuntimeException("parse type failed " + str );
+        }
         sub[0] = str.substring(0,index);
         sub[1] = str.substring(index+1,str.length());
         return sub;
