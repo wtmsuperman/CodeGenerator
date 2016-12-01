@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public abstract class Type extends Meta {
     private static HashMap<String, Type> allTypes = new HashMap<>();
-    private static HashMap<String, TypeStrFmt> fmtors = new HashMap<>();
+    private static HashMap<String, TypeStrFmt> fmters = new HashMap<>();
 
     public static void addType(Type type) {
         String typeName = type.getTypeName();
@@ -31,8 +31,8 @@ public abstract class Type extends Meta {
         return allTypes.values();
     }
 
-    public static void addTypeStrFormator(Type t, TypeStrFmt fmt) {
-        fmtors.put(t.getTypeName(), fmt);
+    public static void addTypeStdFormatter(Type t, TypeStrFmt fmt) {
+        fmters.put(t.getTypeName(), fmt);
     }
 
     public abstract String getTypeName();
@@ -47,11 +47,11 @@ public abstract class Type extends Meta {
 
     public String getTypeStr() {
         java.lang.String typeName = this.getTypeName();
-        if (!fmtors.containsKey(typeName)) {
+        if (!fmters.containsKey(typeName)) {
             return getTypeName();
         }
 
-        return fmtors.get(typeName).fmt(this);
+        return fmters.get(typeName).fmt(this);
     }
 
     public boolean isType(Type type)

@@ -22,14 +22,14 @@ public class GeneratorJava  extends  AbstractGenerator{
     @Override
     public void init()
     {
-        Type.addTypeStrFormator(Type.String, new TypeStrFmt() {
+        Type.addTypeStdFormatter(Type.String, new TypeStrFmt() {
             @Override
             public String fmt(Type t) {
                 return "String";
             }
         });
 
-        Type.addTypeStrFormator(Type.List, new TypeStrFmt() {
+        Type.addTypeStdFormatter(Type.List, new TypeStrFmt() {
             @Override
             public String fmt(Type t) {
                 ListType l = (ListType)t;
@@ -38,7 +38,7 @@ public class GeneratorJava  extends  AbstractGenerator{
             }
         });
 
-        Type.addTypeStrFormator(Type.Map, new TypeStrFmt() {
+        Type.addTypeStdFormatter(Type.Map, new TypeStrFmt() {
             @Override
             public String fmt(Type t) {
                 MapType m = (MapType)t;
