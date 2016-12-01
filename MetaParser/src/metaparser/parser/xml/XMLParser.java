@@ -1,12 +1,12 @@
 package metaparser.parser.xml;
 
 import metaparser.meta.Meta;
+import metaparser.parser.Parser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import metaparser.parser.Parser;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -57,16 +57,13 @@ public class XMLParser implements Parser {
                 continue;
             }
 
-            if (node.getNodeName().equalsIgnoreCase("import"))
-            {
-                Element e = (Element)node;
+            if (node.getNodeName().equalsIgnoreCase("import")) {
+                Element e = (Element) node;
                 String fileName = e.getAttribute("file");
-                if (fileName == null || fileName.isEmpty())
-                {
+                if (fileName == null || fileName.isEmpty()) {
                     throw new RuntimeException("import error file is empty");
                 }
-                if (!parse(fileName))
-                {
+                if (!parse(fileName)) {
                     return false;
                 }
                 continue;
@@ -79,8 +76,7 @@ public class XMLParser implements Parser {
             Meta meta = parser.parse((Element) node, parent, parentMeta);
             if (node.hasChildNodes()) {
                 boolean ret = doParse((Element) node, parser, meta);
-                if (!ret)
-                {
+                if (!ret) {
                     return false;
                 }
             }

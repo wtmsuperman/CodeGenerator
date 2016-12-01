@@ -71,6 +71,10 @@ public class ClassType extends Type {
         return baseClass;
     }
 
+    public void setBaseClass(ClassType baseClass) {
+        this.baseClass = baseClass;
+    }
+
     public void setBaseClass(String baseClass) {
         Type t = getType(baseClass);
         if (t != null) {
@@ -82,10 +86,6 @@ public class ClassType extends Type {
         } else {
             throw new RuntimeException("no such type:" + baseClass);
         }
-    }
-
-    public void setBaseClass(ClassType baseClass) {
-        this.baseClass = baseClass;
     }
 
     public void setClassName(String className) {
@@ -102,10 +102,9 @@ public class ClassType extends Type {
         return true;
     }
 
-    public List<Field> getFields()
-    {
+    public List<Field> getFields() {
         List<Field> list = new ArrayList<>();
-        fields.forEach((k,v) -> list.add(v));
+        fields.forEach((k, v) -> list.add(v));
         return list;
     }
 }

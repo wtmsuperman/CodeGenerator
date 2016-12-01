@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class Meta {
 
     private HashMap<String, Object> metaDatas = new HashMap<>();
+    private String comment;
 
     public void addMetaData(String key, Object val) {
         metaDatas.put(key, val);
@@ -16,8 +17,6 @@ public class Meta {
     public Object getMetaData(String key) {
         return metaDatas.get(key);
     }
-
-    private String comment;
 
     public String getComment() {
         return comment;

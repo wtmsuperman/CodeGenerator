@@ -18,24 +18,24 @@
     </enum>
 
     <class name="Item">
-        <field name="id" type="int" />
+        <field name="id" type="int"/>
         <field name="name" type="string" comment="名字"/>
         <field name="cost" type="int" comment="价值"/>
     </class>
 
     <class name="TaskItem" base="Item">
-        <field name="taskID" type="int" />
+        <field name="taskID" type="int"/>
     </class>
 
     <class name="cfg.Monster" file="怪物表.xls">
         <field name="planningDes" type="string" export="none" str="策划描述"/>
         <field name="name" type="string" comment="怪物名称"/>
         <field name="modelId" type="int" comment="怪物形象id"/>
-        <field name="damage" type="float" comment="伤害值" />
-        <field name="attrs" type="list@int" comment="属性" />
-        <field name="desc" type="map@string,string" comment="描述" />
-        <field name="itemDrops" type="list@Item" comment="掉落" />
+        <field name="damage" type="float" comment="伤害值"/>
+        <field name="attrs" type="list@int" comment="属性"/>
+        <field name="desc" type="map@string,string" comment="描述"/>
+        <field name="itemDrops" type="list@Item" comment="掉落"/>
     </class>
 
-    <import file="config/test.xml" />
+    <import file="config/test.xml"/>
 </root>

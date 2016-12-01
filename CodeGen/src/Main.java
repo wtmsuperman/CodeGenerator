@@ -5,26 +5,22 @@
 import codegen.java.ClassGenerator;
 import codegen.java.EnumGenerator;
 import metaparser.meta.ClassType;
-import metaparser.meta.EnumType;
+import metaparser.meta.Type;
 import metaparser.meta.TypeStrFmt;
 import metaparser.parser.xml.XMLParser;
-import metaparser.meta.Type;
-
-import java.util.Collection;
 
 public class Main {
 
     public static void main(String[] args) {
         XMLParser xmlParser = new XMLParser();
         boolean ret = xmlParser.parse("config/skill.xml");
-        if (!ret)
-        {
+        if (!ret) {
             System.out.println("parse faield");
             return;
         }
 
         EnumGenerator gen = new EnumGenerator();
-        gen.gen(Type.getType("MonsterUseType"),"config/enum_java.ftl","","java");
+        gen.gen(Type.getType("MonsterUseType"), "config/enum_java.ftl", "", "java");
 
         Type.addTypeStrFormator(Type.getType("string"), new TypeStrFmt() {
             @Override
@@ -33,6 +29,6 @@ public class Main {
             }
         });
         ClassGenerator gen2 = new ClassGenerator();
-        gen2.gen((ClassType) Type.getType("Item"),"config/class_java.ftl","","java");
+        gen2.gen((ClassType) Type.getType("Item"), "config/class_java.ftl", "", "java");
     }
 }

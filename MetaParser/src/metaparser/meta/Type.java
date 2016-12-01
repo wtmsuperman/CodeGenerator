@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public abstract class Type extends Meta {
     private static HashMap<String, Type> allTyps = new HashMap<>();
+    private static HashMap<Type, TypeStrFmt> fmtors = new HashMap<>();
 
     //增加基础类型
     static {
@@ -39,6 +40,10 @@ public abstract class Type extends Meta {
         return allTyps.values();
     }
 
+    public static void addTypeStrFormator(Type t, TypeStrFmt fmt) {
+        fmtors.put(t, fmt);
+    }
+
     public abstract String getTypeName();
 
     public boolean isClass() {
@@ -49,17 +54,8 @@ public abstract class Type extends Meta {
         return false;
     }
 
-    private static HashMap<Type,TypeStrFmt> fmtors = new HashMap<>();
-
-    public static void addTypeStrFormator(Type t,TypeStrFmt fmt)
-    {
-        fmtors.put(t,fmt);
-    }
-
-    public String getTypeStr()
-    {
-        if (!fmtors.containsKey(this))
-        {
+    public String getTypeStr() {
+        if (!fmtors.containsKey(this)) {
             return getTypeName();
         }
 

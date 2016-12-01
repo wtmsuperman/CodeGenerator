@@ -13,12 +13,12 @@ public class Field extends Meta {
         return fieldType;
     }
 
-    public void setFieldType(String fieldType) {
-        setFieldType(Type.getType(fieldType));
-    }
-
     public void setFieldType(Type fieldType) {
         this.fieldType = fieldType;
+    }
+
+    public void setFieldType(String fieldType) {
+        setFieldType(Type.getType(fieldType));
     }
 
     public String getFieldName() {
