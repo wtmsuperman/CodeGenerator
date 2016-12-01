@@ -102,6 +102,20 @@ public class ClassType extends Type {
         return true;
     }
 
+    public boolean isTypeOf(ClassType baseClass)
+    {
+        if (this.baseClass == null)
+        {
+            return false;
+        }
+
+        if (this.baseClass == baseClass)
+        {
+            return true;
+        }
+        return baseClass.isTypeOf(baseClass);
+    }
+
     public List<Field> getFields() {
         List<Field> list = new ArrayList<>();
         fields.forEach((k, v) -> list.add(v));

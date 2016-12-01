@@ -54,14 +54,17 @@ public abstract class Type extends Meta {
         return fmtors.get(typeName).fmt(this);
     }
 
-
-
+    public boolean isType(Type type)
+    {
+        return this.getTypeName().equals(type.getTypeName());
+    }
 
     public static FloatType Float = new FloatType();
     public static BoolType  Bool = new BoolType();
     public static IntType Int = new IntType();
     public static ListType List = new ListType();
     public static StringType String = new StringType();
+    public static MapType Map = new MapType();
 
     //增加基础类型
     static {
@@ -70,5 +73,6 @@ public abstract class Type extends Meta {
         addType(Int);
         addType(List);
         addType(String);
+        addType(Map);
     }
 }

@@ -8,9 +8,11 @@ import metaparser.meta.ClassType;
 import metaparser.meta.Type;
 import metaparser.meta.TypeStrFmt;
 import metaparser.meta.basic.ListType;
+import metaparser.meta.basic.MapType;
 import metaparser.parser.xml.XMLParser;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
@@ -36,24 +38,38 @@ public class Main {
             @Override
             public String fmt(Type t) {
                 ListType l = (ListType)t;
-                String boxName = "";
-                HashMap<Type,String> map = new HashMap<Type, String>();
-                map.put(Type.Int,"Integer");
-                map.put(Type.String,"String");
-                map.put(Type.Float,"Float");
-                if (map.containsKey(l.getValueType()))
-                {
-                    boxName = map.get(l.getValueType());
-                }
-                else
-                {
-                    boxName = l.getValueType().getTypeStr();
-                }
+                String boxName = getBoxName(l.getValueType());
                 return "List<" + boxName + ">";
+            }
+        });
+
+        Type.addTypeStrFormator(Type.Map.getTypeName(), new TypeStrFmt() {
+            @Override
+            public String fmt(Type t) {
+                MapType m = (MapType)t;
+                return "Map<" + getBoxName(m.getKeyType()) + "," + getBoxName(m.getValueType()) + ">";
             }
         });
 
         ClassGenerator gen2 = new ClassGenerator();
         gen2.gen((ClassType) Type.getType("Monster"), "config/class_java.ftl", "", "java");
+    }
+
+    public static String getBoxName(Type t)
+    {
+        String boxName = "";
+        HashMap<Type,String> map = new HashMap<Type, String>();
+        map.put(Type.Int,"Integer");
+        map.put(Type.String,"String");
+        map.put(Type.Float,"Float");
+        if (map.containsKey(t))
+        {
+            boxName = map.get(t);
+        }
+        else
+        {
+            boxName = t.getTypeStr();
+        }
+        return boxName;
     }
 }

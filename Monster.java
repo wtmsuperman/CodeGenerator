@@ -1,5 +1,6 @@
 
-
+import java.util.List;
+import java.util.Map;
 
 public class Monster  {
 
@@ -8,7 +9,8 @@ public class Monster  {
     private String planningDes;
     private int modelId;
     private String name;
-    private List<List<Integer>> attrs;
+    private List<Integer> attrs;
+    private Map<String,String> desc;
 
     public float getDamage()
     {
@@ -55,14 +57,23 @@ public class Monster  {
     {
         this.name = name;
     }
-    public List<List<Integer>> getAttrs()
+    public List<Integer> getAttrs()
     {
         return attrs;
     }
 
-    public void setAttrs(List<List<Integer>> attrs)
+    public void setAttrs(List<Integer> attrs)
     {
         this.attrs = attrs;
+    }
+    public Map<String,String> getDesc()
+    {
+        return desc;
+    }
+
+    public void setDesc(Map<String,String> desc)
+    {
+        this.desc = desc;
     }
 
 }

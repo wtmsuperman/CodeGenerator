@@ -1,5 +1,7 @@
 
-
+<#list usings as u>
+import ${u};
+</#list>
 
 public class ${class.typeStr} <#if class.baseClass??>extends ${class.baseClass.typeStr}</#if> {
 
