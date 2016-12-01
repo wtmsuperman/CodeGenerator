@@ -28,7 +28,7 @@
     </class>
 
     <class name="Monster" file="怪物表.xls">
-        <field name="planningDes" type="string" export="none" str="策划描述"/>
+        <field name="planningDes" type="string" export="none" comment="策划描述"/>
         <field name="name" type="string" comment="怪物名称"/>
         <field name="modelId" type="int" comment="怪物形象id"/>
         <field name="damage" type="float" comment="伤害值"/>
