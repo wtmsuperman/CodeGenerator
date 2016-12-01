@@ -16,4 +16,15 @@ public class Meta {
     public Object getMetaData(String key) {
         return metaDatas.get(key);
     }
+
+    private String comment = "";
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
 }

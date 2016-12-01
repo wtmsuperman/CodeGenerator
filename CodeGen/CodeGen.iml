@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="MetaParser" />
+    <orderEntry type="library" name="freemarker" level="project" />
   </component>
 </module>

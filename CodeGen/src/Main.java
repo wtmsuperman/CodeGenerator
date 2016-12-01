@@ -2,6 +2,8 @@
  * Created by Administrator on 2016/11/28.
  */
 
+import codegen.java.EnumGenerator;
+import metaparser.meta.EnumType;
 import metaparser.parser.xml.XMLParser;
 import metaparser.meta.Type;
 
@@ -17,9 +19,8 @@ public class Main {
             System.out.println("parse faield");
             return;
         }
-        Collection<Type> allTypes = Type.getAllType();
-        for (Type t : allTypes) {
-            System.out.println(t.getTypeName());
-        }
+
+        EnumGenerator gen = new EnumGenerator();
+        gen.gen(Type.getType("MonsterUseType"),"config/enum_java.ftl","","java");
     }
 }

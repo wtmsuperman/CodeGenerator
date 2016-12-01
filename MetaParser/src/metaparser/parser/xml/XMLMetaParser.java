@@ -53,7 +53,7 @@ public abstract class XMLMetaParser {
         } else if (name.equalsIgnoreCase("ref")) {
             return true;
         } else if (name.equalsIgnoreCase("comment")) {
-            meta.addMetaData("comment", value);
+            meta.setComment(value);
             return true;
         }
         return false;
