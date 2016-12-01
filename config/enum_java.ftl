@@ -2,7 +2,7 @@
 public enum ${enum.typeName}{
 
 <#list enum.cases as case>
-    ${case.name}(${case.value},"${case.name}") /*${case.comment}*/,
+    ${case.name}(${case.value},"${case.name}") <#if case.comment??> /*${case.comment}*/ </#if>,
 </#list>
     ;
 

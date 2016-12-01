@@ -17,7 +17,7 @@ public class Meta {
         return metaDatas.get(key);
     }
 
-    private String comment = "";
+    private String comment;
 
     public String getComment() {
         return comment;
