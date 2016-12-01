@@ -1,6 +1,8 @@
 package metaparser.meta;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/11/29.
@@ -98,5 +100,12 @@ public class ClassType extends Type {
     @Override
     public boolean isClass() {
         return true;
+    }
+
+    public List<Field> getFields()
+    {
+        List<Field> list = new ArrayList<>();
+        fields.forEach((k,v) -> list.add(v));
+        return list;
     }
 }

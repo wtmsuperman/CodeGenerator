@@ -2,7 +2,9 @@
  * Created by Administrator on 2016/11/28.
  */
 
+import codegen.java.ClassGenerator;
 import codegen.java.EnumGenerator;
+import metaparser.meta.ClassType;
 import metaparser.meta.EnumType;
 import metaparser.parser.xml.XMLParser;
 import metaparser.meta.Type;
@@ -22,5 +24,8 @@ public class Main {
 
         EnumGenerator gen = new EnumGenerator();
         gen.gen(Type.getType("MonsterUseType"),"config/enum_java.ftl","","java");
+
+        ClassGenerator gen2 = new ClassGenerator();
+        gen2.gen((ClassType) Type.getType("TaskItem"),"config/class_java.ftl","","java");
     }
 }
