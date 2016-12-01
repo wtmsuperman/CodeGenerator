@@ -2,17 +2,11 @@
  * Created by Administrator on 2016/11/28.
  */
 
-import codegen.java.ClassGenerator;
-import codegen.java.EnumGenerator;
+import codegen.java.Generator;
 import metaparser.meta.ClassType;
+import metaparser.meta.EnumType;
 import metaparser.meta.Type;
-import metaparser.meta.TypeStrFmt;
-import metaparser.meta.basic.ListType;
-import metaparser.meta.basic.MapType;
 import metaparser.parser.xml.XMLParser;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
 
@@ -24,52 +18,11 @@ public class Main {
             return;
         }
 
-        EnumGenerator gen = new EnumGenerator();
-        gen.gen(Type.getType("MonsterUseType"), "config/enum_java.ftl", "", "java");
-
-        Type.addTypeStrFormator(Type.String.getTypeName(), new TypeStrFmt() {
-            @Override
-            public String fmt(Type t) {
-                return "String";
-            }
-        });
-
-        Type.addTypeStrFormator(Type.List.getTypeName(), new TypeStrFmt() {
-            @Override
-            public String fmt(Type t) {
-                ListType l = (ListType)t;
-                String boxName = getBoxName(l.getValueType());
-                return "List<" + boxName + ">";
-            }
-        });
-
-        Type.addTypeStrFormator(Type.Map.getTypeName(), new TypeStrFmt() {
-            @Override
-            public String fmt(Type t) {
-                MapType m = (MapType)t;
-                return "Map<" + getBoxName(m.getKeyType()) + "," + getBoxName(m.getValueType()) + ">";
-            }
-        });
-
-        ClassGenerator gen2 = new ClassGenerator();
-        gen2.gen((ClassType) Type.getType("Monster"), "config/class_java.ftl", "", "java");
-    }
-
-    public static String getBoxName(Type t)
-    {
-        String boxName = "";
-        HashMap<Type,String> map = new HashMap<Type, String>();
-        map.put(Type.Int,"Integer");
-        map.put(Type.String,"String");
-        map.put(Type.Float,"Float");
-        if (map.containsKey(t))
-        {
-            boxName = map.get(t);
-        }
-        else
-        {
-            boxName = t.getTypeStr();
-        }
-        return boxName;
+        Generator gen = new Generator();
+        gen.init();
+        gen.genEnum((EnumType)Type.getType("MonsterUseType"), "config/enum_java.ftl", "gencode/", "java");
+        gen.genClass((ClassType) Type.getType("Item"), "config/class_java.ftl", "gencode/", "java");
+        gen.genClass((ClassType) Type.getType("TaskItem"), "config/class_java.ftl", "gencode/", "java");
+        gen.genClass((ClassType) Type.getType("Monster"), "config/class_java.ftl", "gencode/", "java");
     }
 }

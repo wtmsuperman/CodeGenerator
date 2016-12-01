@@ -1,3 +1,4 @@
+package ${name_space};
 
 <#list usings as u>
 import ${u};

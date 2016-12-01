@@ -1,3 +1,4 @@
+package gencode;
 
 public enum MonsterUseType{
 

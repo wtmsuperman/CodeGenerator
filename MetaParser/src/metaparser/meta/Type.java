@@ -31,8 +31,8 @@ public abstract class Type extends Meta {
         return allTyps.values();
     }
 
-    public static void addTypeStrFormator(String typeName, TypeStrFmt fmt) {
-        fmtors.put(typeName, fmt);
+    public static void addTypeStrFormator(Type t, TypeStrFmt fmt) {
+        fmtors.put(t.getTypeName(), fmt);
     }
 
     public abstract String getTypeName();

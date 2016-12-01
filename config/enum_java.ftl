@@ -1,3 +1,4 @@
+package ${name_space};
 
 public enum ${enum.typeStr}{
 
