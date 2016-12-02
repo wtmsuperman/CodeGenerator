@@ -31,10 +31,30 @@ public class Meta {
         this.comments = comments;
     }
 
-    public boolean metaDataValueIsTrue(String key)
+    public int getMetaDataAsInt(String key)
     {
-        String data = (String) metaDatas.get(key);
-        if (data == null) return false;
-        return data.equalsIgnoreCase("true");
+        return Integer.parseInt(getMetaDataAsString(key));
+    }
+
+    public float getMetaDataAsFloat(String key)
+    {
+        return Float.parseFloat(getMetaDataAsString(key));
+    }
+
+    public boolean getMetaDataAsBoolean(String key)
+    {
+        return Boolean.parseBoolean(getMetaDataAsString(key));
+    }
+
+    public boolean getMetaDataAsBoolean(String key,boolean defaultVal)
+    {
+        Object val = metaDatas.get(key);
+        if (key == null) return defaultVal;
+        return Boolean.parseBoolean((String)val);
+    }
+
+    public boolean hasMetaData(String key)
+    {
+        return metaDatas.containsKey(key);
     }
 }

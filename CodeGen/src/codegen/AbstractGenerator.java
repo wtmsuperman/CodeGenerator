@@ -104,7 +104,7 @@ public abstract class AbstractGenerator {
         allTypes.forEach((t)->allName.add(t.getTypeName()));
         allName.forEach(n -> mkDirIfNeeded(n));
         for (Type t: allTypes) {
-            if (t.metaDataValueIsTrue("notgen"))
+            if (t.getMetaDataAsBoolean("notgen",false) == true)
             {
                 continue;
             }
