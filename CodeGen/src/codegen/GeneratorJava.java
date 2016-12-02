@@ -83,17 +83,26 @@ public class GeneratorJava  extends  AbstractGenerator {
 
         List<Field> fields = classType.getFields();
         HashSet<String> usings = new HashSet<>();
+        String ns = calcNameSpace(classType.getTypeName());
+
         for (Field field : fields) {
-            if (field.getFieldType().isType(Type.List)) {
+            Type valType = field.getFieldType();
+            if (valType.isType(Type.List)) {
                 usings.add("java.util.List");
-            } else if (field.getFieldType().isType(Type.Map)) {
+            } else if (valType.isType(Type.Map)) {
                 usings.add("java.util.Map");
+            } else if (valType.isClass() || valType.isEnum()) {
+                String fns = calcNameSpace(valType.getTypeName());
+                if (!fns.equals(ns)) //命名空间不同，加入到引用中
+                {
+                    usings.add(valType.getTypeName());
+                }
             }
         }
 
         List<String> usingsList = new ArrayList<>();
         usings.forEach(s -> usingsList.add(s));
-        String ns = calcNameSpace(classType.getTypeName());
+
         root.put("name_space", ns);
         root.put("usings", usingsList);
         root.put("class", classType);
