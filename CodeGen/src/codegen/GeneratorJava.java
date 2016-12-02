@@ -14,10 +14,6 @@ import java.util.List;
  */
 public class GeneratorJava  extends  AbstractGenerator {
 
-    public GeneratorJava(String outputPath) {
-        super(outputPath);
-    }
-
     @Override
     protected void init() {
         Type.addTypeStdFormatter(Type.String, new TypeStrFmt() {
@@ -75,7 +71,7 @@ public class GeneratorJava  extends  AbstractGenerator {
     }
 
     @Override
-    protected void genClass(ClassType classType, String templatePath) {
+    protected void genClass(ClassType classType) {
         HashMap<String, Object> root = new HashMap<>();
 
         List<Field> fields = classType.getFields();
@@ -104,17 +100,17 @@ public class GeneratorJava  extends  AbstractGenerator {
         root.put("usings", usingsList);
         root.put("class", classType);
 
-        genCode(templatePath,getOutputPath(classType.getTypeName(),"java"),root);
+        genCode(getTemplate("class"),getOutputPath(classType.getTypeName(),"java"),root);
     }
 
     @Override
-    protected void genEnum(EnumType enumType, String templatePath) {
+    protected void genEnum(EnumType enumType) {
         HashMap<String, Object> root = new HashMap<>();
 
         String ns = calcNameSpace(enumType.getTypeName());
         root.put("name_space", ns);
         root.put("enum", enumType);
 
-        genCode(templatePath,getOutputPath(enumType.getTypeName(),"java"),root);
+        genCode(getTemplate("enum"),getOutputPath(enumType.getTypeName(),"java"),root);
     }
 }

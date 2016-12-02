@@ -15,7 +15,11 @@ public class Main {
             return;
         }
 
-        GeneratorJava gen = new GeneratorJava("");
+        GeneratorJava gen = new GeneratorJava();
+        gen.setOutputPath("CodeGen/src/");
+        gen.setTemplatePath("config/");
+        gen.addTemplate("class","class_java.ftl");
+        gen.addTemplate("enum","enum_java.ftl");
         gen.gen();
     }
 }

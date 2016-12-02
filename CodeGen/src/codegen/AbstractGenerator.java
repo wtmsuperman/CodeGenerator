@@ -21,18 +21,25 @@ import java.util.HashSet;
 public abstract class AbstractGenerator {
 
     Configuration configuration;
-    protected String outputPath;
 
-    public AbstractGenerator(String outputPath)
+    protected String outputPath;
+    protected String templatePath;
+    protected String classSharedTemplate;
+    protected String enumSharedTemplate;
+    private HashMap<String,String> templateMaps;
+
+    public AbstractGenerator()
     {
+        outputPath = "";
+        templatePath = "";
         configuration = new Configuration();
-        this.outputPath = outputPath;
+        templateMaps = new HashMap<>();
         init();
     }
 
     protected abstract void init();
-    protected abstract void genClass(ClassType classType, String templatePath);
-    protected abstract void genEnum(EnumType enumType, String templatePath);
+    protected abstract void genClass(ClassType classType);
+    protected abstract void genEnum(EnumType enumType);
 
 
     public String getOutputPath() {
@@ -97,11 +104,11 @@ public abstract class AbstractGenerator {
         for (Type t: allTypes) {
             if (t.isClass())
             {
-                genClass((ClassType) t,"config/class_java.ftl");
+                genClass((ClassType)t);
             }
             else if(t.isEnum())
             {
-                genEnum((EnumType) t, "config/enum_java.ftl");
+                genEnum((EnumType) t);
             }
         }
     }
@@ -114,5 +121,23 @@ public abstract class AbstractGenerator {
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getTemplatePath() {
+        return templatePath;
+    }
+
+    public void setTemplatePath(String templatePath) {
+        this.templatePath = templatePath;
+    }
+
+    public void addTemplate(String tag,String name)
+    {
+        templateMaps.put(tag,name);
+    }
+
+    public String getTemplate(String tag)
+    {
+        return getTemplatePath() + templateMaps.get(tag);
     }
 }
