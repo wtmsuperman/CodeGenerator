@@ -11,7 +11,7 @@ public class Main {
         XMLParser xmlParser = new XMLParser();
         boolean ret = xmlParser.parse("config/skill.xml");
         if (!ret) {
-            System.out.println("parse faield");
+            System.out.println("parse failed");
             return;
         }
 
@@ -20,6 +20,7 @@ public class Main {
         gen.setTemplatePath("config/");
         gen.addTemplate("class","class_java.ftl");
         gen.addTemplate("enum","enum_java.ftl");
+        gen.setTypeTemplate("msg.Message","msg_java_base.ftl");
         gen.gen();
     }
 }

@@ -42,4 +42,20 @@
         <field name="name" type="string" comments="怪物名称"/>
         <field name="TaskItem" type="cfg.TaskItem" comments="测试"/>
     </class>
+
+    <class name="msg.Message" notgen="true">
+    </class>
+
+    <class name="msg.MessageBase" base="msg.Message">
+        <field name="id" type="int" />
+    </class>
+
+    <class name="msg.T1" base="msg.MessageBase">
+    </class>
+
+    <class name="msg.CGLogin" base="msg.MessageBase" class_ftl="msg_java.ftl">
+        <field name="planningDes" type="string" export="none" comments="策划描述"/>
+        <field name="name" type="string" comments="怪物名称"/>
+        <field name="TaskItem" type="cfg.TaskItem" comments="测试"/>
+    </class>
 </root>

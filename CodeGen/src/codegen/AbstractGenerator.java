@@ -27,6 +27,7 @@ public abstract class AbstractGenerator {
     protected String classSharedTemplate;
     protected String enumSharedTemplate;
     private HashMap<String,String> templateMaps;
+    private HashMap<String,String> typeTemplateMaps; //特定类型的特殊模板
 
     public AbstractGenerator()
     {
@@ -34,6 +35,7 @@ public abstract class AbstractGenerator {
         templatePath = "";
         configuration = new Configuration();
         templateMaps = new HashMap<>();
+        typeTemplateMaps = new HashMap<>();
         init();
     }
 
@@ -102,6 +104,11 @@ public abstract class AbstractGenerator {
         allTypes.forEach((t)->allName.add(t.getTypeName()));
         allName.forEach(n -> mkDirIfNeeded(n));
         for (Type t: allTypes) {
+            if (t.metaDataValueIsTrue("notgen"))
+            {
+                continue;
+            }
+
             if (t.isClass())
             {
                 genClass((ClassType)t);
@@ -136,8 +143,34 @@ public abstract class AbstractGenerator {
         templateMaps.put(tag,name);
     }
 
-    public String getTemplate(String tag)
+    public String getTemplate(Type t,String tag)
     {
+        //优先使用自身的设置
+        Object data = t.getMetaData(tag + "_ftl");
+        if (data != null)
+        {
+            return getTemplatePath() + (String)data;
+        }
+
+        if (t.isClass())
+        {
+            //向上查找，使用父类型的模板
+            ClassType clazz = (ClassType)t;
+            while (clazz != null)
+            {
+                if (typeTemplateMaps.containsKey(clazz.getTypeName()))
+                {
+                    return getTemplatePath() + typeTemplateMaps.get(clazz.getTypeName());
+                }
+                clazz = clazz.getBaseClass();
+            }
+        }
+
         return getTemplatePath() + templateMaps.get(tag);
+    }
+
+    public void setTypeTemplate(String typeName,String template)
+    {
+        typeTemplateMaps.put(typeName,template);
     }
 }

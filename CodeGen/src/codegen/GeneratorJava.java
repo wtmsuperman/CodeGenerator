@@ -100,7 +100,7 @@ public class GeneratorJava  extends  AbstractGenerator {
         root.put("usings", usingsList);
         root.put("class", classType);
 
-        genCode(getTemplate("class"),getOutputPath(classType.getTypeName(),"java"),root);
+        genCode(getTemplate(classType,"class"),getOutputPath(classType.getTypeName(),"java"),root);
     }
 
     @Override
@@ -111,6 +111,6 @@ public class GeneratorJava  extends  AbstractGenerator {
         root.put("name_space", ns);
         root.put("enum", enumType);
 
-        genCode(getTemplate("enum"),getOutputPath(enumType.getTypeName(),"java"),root);
+        genCode(getTemplate(enumType,"enum"),getOutputPath(enumType.getTypeName(),"java"),root);
     }
 }

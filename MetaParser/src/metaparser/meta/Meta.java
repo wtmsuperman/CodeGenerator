@@ -18,6 +18,11 @@ public class Meta {
         return metaDatas.get(key);
     }
 
+    public String getMetaDataAsString(String key)
+    {
+        return (String)metaDatas.get(key);
+    }
+
     public String getComments() {
         return comments;
     }
@@ -26,4 +31,10 @@ public class Meta {
         this.comments = comments;
     }
 
+    public boolean metaDataValueIsTrue(String key)
+    {
+        String data = (String) metaDatas.get(key);
+        if (data == null) return false;
+        return data.equalsIgnoreCase("true");
+    }
 }
