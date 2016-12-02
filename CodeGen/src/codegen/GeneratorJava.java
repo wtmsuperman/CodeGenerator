@@ -7,21 +7,22 @@ import metaparser.meta.*;
 import metaparser.meta.basic.ListType;
 import metaparser.meta.basic.MapType;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/12/1.
  */
-public class GeneratorJava  extends  AbstractGenerator{
+public class GeneratorJava  extends  AbstractGenerator {
+
+    public GeneratorJava(String outputPath) {
+        super(outputPath);
+    }
 
     @Override
-    public void init()
-    {
+    protected void init() {
         Type.addTypeStdFormatter(Type.String, new TypeStrFmt() {
             @Override
             public String fmt(Type t) {
@@ -32,7 +33,7 @@ public class GeneratorJava  extends  AbstractGenerator{
         Type.addTypeStdFormatter(Type.List, new TypeStrFmt() {
             @Override
             public String fmt(Type t) {
-                ListType l = (ListType)t;
+                ListType l = (ListType) t;
                 String boxName = getBoxName(l.getValueType());
                 return "List<" + boxName + ">";
             }
@@ -41,58 +42,66 @@ public class GeneratorJava  extends  AbstractGenerator{
         Type.addTypeStdFormatter(Type.Map, new TypeStrFmt() {
             @Override
             public String fmt(Type t) {
-                MapType m = (MapType)t;
+                MapType m = (MapType) t;
                 return "Map<" + getBoxName(m.getKeyType()) + "," + getBoxName(m.getValueType()) + ">";
+            }
+        });
+
+        Type.setClassFmtter(new TypeStrFmt() {
+            @Override
+            public String fmt(Type t) {
+                return calcName(t.getTypeName());
+            }
+        });
+
+        Type.setEnumFmtter(new TypeStrFmt() {
+            @Override
+            public String fmt(Type t) {
+                return calcName(t.getTypeName());
             }
         });
     }
 
-    public String getBoxName(Type t)
-    {
+    public String getBoxName(Type t) {
         String boxName = "";
-        HashMap<Type,String> map = new HashMap<Type, String>();
-        map.put(Type.Int,"Integer");
-        map.put(Type.String,"String");
-        map.put(Type.Float,"Float");
-        if (map.containsKey(t))
-        {
+        HashMap<Type, String> map = new HashMap<Type, String>();
+        map.put(Type.Int, "Integer");
+        map.put(Type.String, "String");
+        map.put(Type.Float, "Float");
+        map.put(Type.Bool,"Boolean");
+        if (map.containsKey(t)) {
             boxName = map.get(t);
-        }
-        else
-        {
+        } else {
             boxName = t.getTypeStr();
         }
         return boxName;
     }
 
     @Override
-    public void genClass(ClassType classType, String templatePath, String outputPath, String typeName) {
+    protected void genClass(ClassType classType, String templatePath) {
         HashMap<String, Object> root = new HashMap<>();
 
         List<Field> fields = classType.getFields();
         HashSet<String> usings = new HashSet<>();
         for (Field field : fields) {
-            if (field.getFieldType().isType(Type.List))
-            {
+            if (field.getFieldType().isType(Type.List)) {
                 usings.add("java.util.List");
-            }
-            else if(field.getFieldType().isType(Type.Map))
-            {
+            } else if (field.getFieldType().isType(Type.Map)) {
                 usings.add("java.util.Map");
             }
         }
 
         List<String> usingsList = new ArrayList<>();
         usings.forEach(s -> usingsList.add(s));
-        String ns = getNameSpace(outputPath);
-        root.put("name_space",ns);
-        root.put("usings",usingsList);
+        String ns = calcNameSpace(classType.getTypeName());
+        root.put("name_space", ns);
+        root.put("usings", usingsList);
         root.put("class", classType);
 
         Configuration config = new Configuration();
         try {
             Template template = config.getTemplate(templatePath);
-            String path = outputPath + classType.getTypeName() + "." + typeName;
+            String path = getOutputPath(classType.getTypeName(),"java");
             template.process(root, new FileWriter(path));
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
@@ -100,27 +109,20 @@ public class GeneratorJava  extends  AbstractGenerator{
     }
 
     @Override
-    public void genEnum(EnumType enumType, String templatePath, String outputPath, String typeName) {
+    protected void genEnum(EnumType enumType, String templatePath) {
         HashMap<String, Object> root = new HashMap<>();
 
-        String ns = getNameSpace(outputPath);
-        root.put("name_space",ns);
+        String ns = calcNameSpace(enumType.getTypeName());
+        root.put("name_space", ns);
         root.put("enum", enumType);
 
         Configuration config = new Configuration();
         try {
             Template template = config.getTemplate(templatePath);
-            String path = outputPath + enumType.getTypeName() + "." + typeName;
+            String path = getOutputPath(enumType.getTypeName(),"java");
             template.process(root, new FileWriter(path));
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }
-    }
-
-    public String getNameSpace(String outputPath)
-    {
-        String ns = outputPath.replace("/",".");
-        ns = ns.substring(0,ns.lastIndexOf('.'));
-        return ns;
     }
 }

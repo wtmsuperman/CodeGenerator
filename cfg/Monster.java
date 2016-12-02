@@ -1,4 +1,4 @@
-package gencode;
+package cfg;
 
 import java.util.List;
 import java.util.Map;

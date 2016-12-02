@@ -18,10 +18,7 @@ public class Main {
             return;
         }
 
-        GeneratorJava gen = new GeneratorJava();
-        gen.genEnum((EnumType)Type.getType("MonsterUseType"), "config/enum_java.ftl", "gencode/", "java");
-        gen.genClass((ClassType) Type.getType("Item"), "config/class_java.ftl", "gencode/", "java");
-        gen.genClass((ClassType) Type.getType("TaskItem"), "config/class_java.ftl", "gencode/", "java");
-        gen.genClass((ClassType) Type.getType("Monster"), "config/class_java.ftl", "gencode/", "java");
+        GeneratorJava gen = new GeneratorJava("");
+        gen.gen();
     }
 }

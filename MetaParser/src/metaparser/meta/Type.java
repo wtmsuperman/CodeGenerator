@@ -12,6 +12,8 @@ import java.util.HashMap;
 public abstract class Type extends Meta {
     private static HashMap<String, Type> allTypes = new HashMap<>();
     private static HashMap<String, TypeStrFmt> fmtters = new HashMap<>();
+    private static TypeStrFmt classFmtter;
+    private static TypeStrFmt enumFmtter;
 
     public static void addType(Type type) {
         String typeName = type.getTypeName();
@@ -48,6 +50,14 @@ public abstract class Type extends Meta {
     public String getTypeStr() {
         java.lang.String typeName = this.getTypeName();
         if (!fmtters.containsKey(typeName)) {
+            if (isClass())
+            {
+                return classFmtter.fmt(this);
+            }
+            else if(isEnum())
+            {
+                return enumFmtter.fmt(this);
+            }
             return getTypeName();
         }
 
@@ -57,6 +67,14 @@ public abstract class Type extends Meta {
     public boolean isType(Type type)
     {
         return this.getTypeName().equals(type.getTypeName());
+    }
+
+    public static void setClassFmtter(TypeStrFmt classFmtter) {
+        Type.classFmtter = classFmtter;
+    }
+
+    public static void setEnumFmtter(TypeStrFmt enumFmtter) {
+        Type.enumFmtter = enumFmtter;
     }
 
     public static FloatType Float = new FloatType();
