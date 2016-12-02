@@ -4,9 +4,9 @@ import cfg.TaskItem;
 
 public class Test  {
 
-    private String planningDes;
-    private String name;
-    private TaskItem TaskItem;
+    private String planningDes;      //策划描述
+    private String name;      //怪物名称
+    private TaskItem TaskItem;      //测试
 
     public String getPlanningDes()
     {

@@ -3,9 +3,9 @@ package cfg;
 
 public class Item  {
 
-    private int cost;
-    private String name;
-    private int id;
+    private int cost;      //价值
+    private String name;      //名字
+    private int id;      
 
     public int getCost()
     {

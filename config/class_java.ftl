@@ -1,4 +1,6 @@
+<#if name_space??>
 package ${name_space};
+</#if>
 
 <#list usings as u>
 import ${u};
@@ -7,7 +9,7 @@ import ${u};
 public class ${class.typeStr} <#if class.baseClass??>extends ${class.baseClass.typeStr}</#if> {
 
 <#list class.fields as field>
-    private ${field.fieldType.typeStr} ${field.fieldName};
+    private ${field.fieldType.typeStr} ${field.fieldName};      <#if field.comments??>//${field.comments}</#if>
 </#list>
 
 <#list class.fields as field>

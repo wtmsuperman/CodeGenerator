@@ -3,7 +3,7 @@ package cfg;
 
 public class TaskItem extends Item {
 
-    private int taskID;
+    private int taskID;      
 
     public int getTaskID()
     {

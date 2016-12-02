@@ -1,11 +1,10 @@
 package cfg;
-
 public enum MonsterUseType{
 
-    GHOST(1,"GHOST")  /*抓鬼*/ ,
-    DEMON(3,"DEMON")  /*封妖*/ ,
-    CREEPS(0,"CREEPS") ,
-    STORY(2,"STORY")  /*剧情*/ ,
+    GHOST(1,"GHOST"),       /*抓鬼*/ 
+    DEMON(3,"DEMON"),       /*封妖*/ 
+    CREEPS(0,"CREEPS"),      
+    STORY(2,"STORY"),       /*剧情*/ 
     ;
 
     private int value;

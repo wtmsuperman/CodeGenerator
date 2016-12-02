@@ -1,9 +1,10 @@
+<#if name_space??>
 package ${name_space};
-
+</#if>
 public enum ${enum.typeStr}{
 
 <#list enum.cases as case>
-    ${case.name}(${case.value},"${case.name}") <#if case.comment??> /*${case.comment}*/ </#if>,
+    ${case.name}(${case.value},"${case.name}"),      <#if case.comments??> /*${case.comments}*/ </#if>
 </#list>
     ;
 

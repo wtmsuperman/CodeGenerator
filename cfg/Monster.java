@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class Monster  {
 
-    private float damage;
-    private List<Item> itemDrops;
-    private String planningDes;
-    private int modelId;
-    private String name;
-    private List<Integer> attrs;
-    private Map<String,String> desc;
+    private float damage;      //伤害值
+    private List<Item> itemDrops;      //掉落
+    private String planningDes;      //策划描述
+    private int modelId;      //怪物形象id
+    private String name;      //怪物名称
+    private List<Integer> attrs;      //属性
+    private Map<String,String> desc;      //描述
 
     public float getDamage()
     {

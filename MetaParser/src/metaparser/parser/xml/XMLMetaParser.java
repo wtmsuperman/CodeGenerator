@@ -52,8 +52,8 @@ public abstract class XMLMetaParser {
             return true;
         } else if (name.equalsIgnoreCase("ref")) {
             return true;
-        } else if (name.equalsIgnoreCase("comment")) {
-            meta.setComment(value);
+        } else if (name.equalsIgnoreCase("comments")) {
+            meta.setComments(value);
             return true;
         }
         return false;

@@ -1,26 +1,26 @@
 <root>
     <enum name="cfg.MonsterUseType">
         <case name="CREEPS" value="0"/>
-        <case name="GHOST" comment="抓鬼" value="1"/>
-        <case name="STORY" comment="剧情" value="2"/>
-        <case name="DEMON" comment="封妖" value="3"/>
+        <case name="GHOST" comments="抓鬼" value="1"/>
+        <case name="STORY" comments="剧情" value="2"/>
+        <case name="DEMON" comments="封妖" value="3"/>
     </enum>
 
     <enum name="cfg.MonsterAttackType">
-        <case name="OUTATTACK" comment="外功" value="0"/>
-        <case name="INATTACK" comment="内功" value="1"/>
-        <case name="SEAL" comment="封印" value="2"/>
-        <case name="AUXILIARY" comment="辅助" value="3"/>
-        <case name="OUTATTACKMAINMONSTER" comment="外功主怪" value="4"/>
-        <case name="INATTACKMAINMONSTER" comment="内功主怪" value="5"/>
-        <case name="SEALMAINMONSTER" comment="封印主怪" value="6"/>
-        <case name="AUXILIARYMAINMONSTER" comment="辅助主怪" value="7"/>
+        <case name="OUTATTACK" comments="外功" value="0"/>
+        <case name="INATTACK" comments="内功" value="1"/>
+        <case name="SEAL" comments="封印" value="2"/>
+        <case name="AUXILIARY" comments="辅助" value="3"/>
+        <case name="OUTATTACKMAINMONSTER" comments="外功主怪" value="4"/>
+        <case name="INATTACKMAINMONSTER" comments="内功主怪" value="5"/>
+        <case name="SEALMAINMONSTER" comments="封印主怪" value="6"/>
+        <case name="AUXILIARYMAINMONSTER" comments="辅助主怪" value="7"/>
     </enum>
 
     <class name="cfg.Item">
         <field name="id" type="int"/>
-        <field name="name" type="string" comment="名字"/>
-        <field name="cost" type="int" comment="价值"/>
+        <field name="name" type="string" comments="名字"/>
+        <field name="cost" type="int" comments="价值"/>
     </class>
 
     <class name="cfg.TaskItem" base="cfg.Item">
@@ -28,18 +28,18 @@
     </class>
 
     <class name="cfg.Monster" file="怪物表.xls">
-        <field name="planningDes" type="string" export="none" comment="策划描述"/>
-        <field name="name" type="string" comment="怪物名称"/>
-        <field name="modelId" type="int" comment="怪物形象id"/>
-        <field name="damage" type="float" comment="伤害值"/>
-        <field name="attrs" type="list@int" comment="属性"/>
-        <field name="desc" type="map@string,string" comment="描述"/>
-        <field name="itemDrops" type="list@cfg.Item" comment="掉落"/>
+        <field name="planningDes" type="string" export="none" comments="策划描述"/>
+        <field name="name" type="string" comments="怪物名称"/>
+        <field name="modelId" type="int" comments="怪物形象id"/>
+        <field name="damage" type="float" comments="伤害值"/>
+        <field name="attrs" type="list@int" comments="属性"/>
+        <field name="desc" type="map@string,string" comments="描述"/>
+        <field name="itemDrops" type="list@cfg.Item" comments="掉落"/>
     </class>
 
     <class name="cfg.Skill.Test" file="怪物表.xls">
-        <field name="planningDes" type="string" export="none" comment="策划描述"/>
-        <field name="name" type="string" comment="怪物名称"/>
-        <field name="TaskItem" type="cfg.TaskItem" comment="测试"/>
+        <field name="planningDes" type="string" export="none" comments="策划描述"/>
+        <field name="name" type="string" comments="怪物名称"/>
+        <field name="TaskItem" type="cfg.TaskItem" comments="测试"/>
     </class>
 </root>
