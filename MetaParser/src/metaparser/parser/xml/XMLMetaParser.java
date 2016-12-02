@@ -48,11 +48,7 @@ public abstract class XMLMetaParser {
     }
 
     protected boolean parseAttr(Meta meta, String name, String value) {
-        if (name.equalsIgnoreCase("range")) {
-            return true;
-        } else if (name.equalsIgnoreCase("ref")) {
-            return true;
-        } else if (name.equalsIgnoreCase("comments")) {
+        if (name.equalsIgnoreCase("comments")) {
             meta.setComments(value);
             return true;
         }

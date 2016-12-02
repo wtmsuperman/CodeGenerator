@@ -3,9 +3,6 @@
  */
 
 import codegen.GeneratorJava;
-import metaparser.meta.ClassType;
-import metaparser.meta.EnumType;
-import metaparser.meta.Type;
 import metaparser.parser.xml.XMLParser;
 
 public class Main {

@@ -1,16 +1,13 @@
 package codegen;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import metaparser.meta.*;
 import metaparser.meta.basic.ListType;
 import metaparser.meta.basic.MapType;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/12/1.
