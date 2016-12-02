@@ -107,14 +107,7 @@ public class GeneratorJava  extends  AbstractGenerator {
         root.put("usings", usingsList);
         root.put("class", classType);
 
-        Configuration config = new Configuration();
-        try {
-            Template template = config.getTemplate(templatePath);
-            String path = getOutputPath(classType.getTypeName(),"java");
-            template.process(root, new FileWriter(path));
-        } catch (IOException | TemplateException e) {
-            e.printStackTrace();
-        }
+        genCode(templatePath,getOutputPath(classType.getTypeName(),"java"),root);
     }
 
     @Override
@@ -125,13 +118,6 @@ public class GeneratorJava  extends  AbstractGenerator {
         root.put("name_space", ns);
         root.put("enum", enumType);
 
-        Configuration config = new Configuration();
-        try {
-            Template template = config.getTemplate(templatePath);
-            String path = getOutputPath(enumType.getTypeName(),"java");
-            template.process(root, new FileWriter(path));
-        } catch (IOException | TemplateException e) {
-            e.printStackTrace();
-        }
+        genCode(templatePath,getOutputPath(enumType.getTypeName(),"java"),root);
     }
 }

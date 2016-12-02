@@ -1,11 +1,17 @@
 package codegen;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import metaparser.meta.ClassType;
 import metaparser.meta.EnumType;
 import metaparser.meta.Type;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -14,10 +20,12 @@ import java.util.HashSet;
 
 public abstract class AbstractGenerator {
 
+    Configuration configuration;
     protected String outputPath;
 
     public AbstractGenerator(String outputPath)
     {
+        configuration = new Configuration();
         this.outputPath = outputPath;
         init();
     }
@@ -95,6 +103,16 @@ public abstract class AbstractGenerator {
             {
                 genEnum((EnumType) t, "config/enum_java.ftl");
             }
+        }
+    }
+
+    protected void genCode(String templatePath, String outputPath, HashMap<String,Object> root)
+    {
+        try {
+            Template template = configuration.getTemplate(templatePath);
+            template.process(root, new FileWriter(outputPath));
+        } catch (IOException | TemplateException e) {
+            e.printStackTrace();
         }
     }
 }
